@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Aloha LLC — Tech · Design · Calligraphy</title>
+    <meta name="description" content="Professional IT consulting, creative design, and calligraphy services.">
+    <meta name="author" content="Kent Schaeffer">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://alittlealoha.pro/">
+    <meta property="og:title"       content="A Little Aloha LLC — Pro Services · Design · Calligraphy">
+    <meta property="og:description" content="IT consulting, design, and calligraphy services.">
+    <meta property="og:image"       content="https://alittlealoha.pro/assets/img/og-image.png">
+    <link rel="canonical" href="https://alittlealoha.pro/">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Vendor CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Fonts (Bunny Fonts — privacy-respecting) -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=sarina:400|syncopate:400,700|chakra-petch:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div id="app">
+
+        <!-- ═══════════════════════════════════════════════════
+             NAVBAR — minimalist, links only, no brand element
+        ═══════════════════════════════════════════════════ -->
+        <nav class="navbar navbar-expand-lg"
+             :class="{ scrolled: isScrolled }"
+             role="navigation" aria-label="Main navigation">
+            <div class="container justify-content-end">
+
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#navLinks"
+                        aria-expanded="false" aria-controls="navLinks"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navLinks">
+                    <ul class="navbar-nav align-items-lg-center gap-lg-3" role="list">
+                        <li role="listitem">
+                            <a class="nav-link" href="#services"
+                               @click.prevent="scrollTo('services')"
+                               :class="{ active: activeSection === 'services' }"
+                               :aria-current="activeSection === 'services' ? 'page' : false">
+                                Services
+                            </a>
+                        </li>
+                        <li role="listitem">
+                            <a class="nav-link" href="#portfolio"
+                               @click.prevent="scrollTo('portfolio')"
+                               :class="{ active: activeSection === 'portfolio' }"
+                               :aria-current="activeSection === 'portfolio' ? 'page' : false">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li role="listitem">
+                            <a class="nav-link" href="#about"
+                               @click.prevent="scrollTo('about')"
+                               :class="{ active: activeSection === 'about' }"
+                               :aria-current="activeSection === 'about' ? 'page' : false">
+                                About
+                            </a>
+                        </li>
+                        <li role="listitem">
+                            <a class="nav-link" href="#platforms"
+                               @click.prevent="scrollTo('platforms')"
+                               :class="{ active: activeSection === 'platforms' }"
+                               :aria-current="activeSection === 'platforms' ? 'page' : false">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ═══════════════════════════════════════════════════
+             HERO — canvas carousel, no text
+        ═══════════════════════════════════════════════════ -->
+        <section id="hero" aria-labelledby="hero-heading">
+            <h1 id="hero-heading" class="visually-hidden">
+                A Little Aloha LLC — Pro Services, Design, and Calligraphy
+            </h1>
+
+            <!--
+                Fixed aspect-ratio container. Canvas fills it absolutely.
+                Nothing outside this box is affected by canvas transitions.
+            -->
+            <div class="hero-logo-container" aria-hidden="true">
+                <canvas id="hero-canvas"></canvas>
+            </div>
+
+            <a class="btn-aloha" href="#services"
+               @click.prevent="scrollTo('services')"
+               aria-label="View available services">
+                View Services <i class="fa fa-arrow-down" aria-hidden="true"></i>
+            </a>
+        </section>
+
+        <main id="main-content">
+
+            <!-- ═══════════════════════════════════════════════
+                 SERVICES
+            ═══════════════════════════════════════════════ -->
+            <section id="services" aria-labelledby="services-heading"
+                     style="background:linear-gradient(180deg,#071A00 0%,#0A2200 100%)">
+                <div class="container">
+                    <div class="section-rule" aria-hidden="true"></div>
+                    <h2 id="services-heading" class="section-title">Services</h2>
+
+                    <div class="intro-banner" role="note" aria-label="Introductory pricing notice">
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                        <p>
+                            <strong>Introductory rates</strong> for first-time clients through
+                            <strong>June 30, 2026</strong> — 20–25% below standard rates across all service areas.
+                        </p>
+                    </div>
+
+                    <div class="alacarte-note" role="note">
+                        <p>All services are <strong>à la carte</strong> — mix and match across practice areas in a single engagement.</p>
+                    </div>
+
+                    <div class="philosophy-note" role="note">
+                        <p>
+                            <strong>Simple solutions to complex problems.</strong>
+                            Secure by default. Open-source tools built to best practices and published standards.
+                            No unnecessary dependence on platforms that treat your data as their product.
+                        </p>
+                    </div>
+
+                    <nav class="sticky-nav" aria-label="Services categories">
+                        <a href="#infra"  @click.prevent="scrollTo('infra')">Infrastructure &amp; DDI</a>
+                        <a href="#webops" @click.prevent="scrollTo('webops')">Web &amp; DevOps</a>
+                        <a href="#design" @click.prevent="scrollTo('design')">Design</a>
+                        <a href="#calli"  @click.prevent="scrollTo('calli')">Calligraphy</a>
+                    </nav>
+
+                    <!-- Infrastructure & DDI -->
+                    <div id="infra" class="dba-section">
+                        <h3 class="sub-dba-title">Infrastructure &amp; DDI</h3>
+                        <div class="single-card"
+                             v-for="s in services.infra" :key="s.title"
+                             :class="{ visible: s.visible, expanded: s.expanded }"
+                             @click="toggleCard(s)"
+                             role="button" tabindex="0"
+                             @keyup.enter="toggleCard(s)"
+                             :aria-expanded="s.expanded.toString()">
+                            <div class="card-header">
+                                <div class="card-icon" aria-hidden="true"><i :class="'fa ' + s.icon"></i></div>
+                                <div class="flex-grow-1 min-w-0">
+                                    <span class="card-title">{{ s.title }}</span>
+                                    <span class="card-meta">{{ s.meta }}</span>
+                                </div>
+                                <div class="expand-indicator" aria-hidden="true"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                            <p class="card-body">{{ s.desc }}</p>
+                            <div class="tag-row" v-if="s.expanded">
+                                <span class="tag" v-for="t in s.tags" :key="t">{{ t }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web & DevOps -->
+                    <div id="webops" class="dba-section">
+                        <h3 class="sub-dba-title">Web &amp; DevOps</h3>
+                        <div class="single-card"
+                             v-for="s in services.webops" :key="s.title"
+                             :class="{ visible: s.visible, expanded: s.expanded }"
+                             @click="toggleCard(s)"
+                             role="button" tabindex="0"
+                             @keyup.enter="toggleCard(s)"
+                             :aria-expanded="s.expanded.toString()">
+                            <div class="card-header">
+                                <div class="card-icon" aria-hidden="true"><i :class="'fa ' + s.icon"></i></div>
+                                <div class="flex-grow-1 min-w-0">
+                                    <span class="card-title">{{ s.title }}</span>
+                                    <span class="card-meta">{{ s.meta }}</span>
+                                </div>
+                                <div class="expand-indicator" aria-hidden="true"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                            <p class="card-body">{{ s.desc }}</p>
+                            <div class="tag-row" v-if="s.expanded">
+                                <span class="tag" v-for="t in s.tags" :key="t">{{ t }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design -->
+                    <div id="design" class="dba-section">
+                        <h3 class="dba-title">Design</h3>
+                        <p class="dba-desc">Graphic design, branding, photography, and print media.</p>
+                        <div class="single-card"
+                             v-for="s in services.design" :key="s.title"
+                             :class="{ visible: s.visible, expanded: s.expanded }"
+                             @click="toggleCard(s)"
+                             role="button" tabindex="0"
+                             @keyup.enter="toggleCard(s)"
+                             :aria-expanded="s.expanded.toString()">
+                            <div class="card-header">
+                                <div class="card-icon" aria-hidden="true"><i :class="'fa ' + s.icon"></i></div>
+                                <div class="flex-grow-1 min-w-0">
+                                    <span class="card-title">{{ s.title }}</span>
+                                    <span class="card-meta">{{ s.meta }}</span>
+                                </div>
+                                <div class="expand-indicator" aria-hidden="true"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                            <p class="card-body">{{ s.desc }}</p>
+                            <div class="tag-row" v-if="s.expanded">
+                                <span class="tag" v-for="t in s.tags" :key="t">{{ t }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calligraphy -->
+                    <div id="calli" class="dba-section">
+                        <h3 class="dba-title">Calligraphy</h3>
+                        <p class="dba-desc">Hand lettering, engrossing, and formal document services.</p>
+                        <div class="single-card"
+                             v-for="s in services.calli" :key="s.title"
+                             :class="{ visible: s.visible, expanded: s.expanded }"
+                             @click="toggleCard(s)"
+                             role="button" tabindex="0"
+                             @keyup.enter="toggleCard(s)"
+                             :aria-expanded="s.expanded.toString()">
+                            <div class="card-header">
+                                <div class="card-icon" aria-hidden="true"><i :class="'fa ' + s.icon"></i></div>
+                                <div class="flex-grow-1 min-w-0">
+                                    <span class="card-title">{{ s.title }}</span>
+                                    <span class="card-meta">{{ s.meta }}</span>
+                                </div>
+                                <div class="expand-indicator" aria-hidden="true"><i class="fa fa-chevron-down"></i></div>
+                            </div>
+                            <p class="card-body">{{ s.desc }}</p>
+                            <div class="tag-row" v-if="s.expanded">
+                                <span class="tag" v-for="t in s.tags" :key="t">{{ t }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════
+                 PORTFOLIO — 3 sub-sections, no filter buttons
+            ═══════════════════════════════════════════════ -->
+            <section id="portfolio" aria-labelledby="portfolio-heading" @contextmenu.prevent>
+                <div class="container">
+                    <div class="section-rule" aria-hidden="true"></div>
+                    <h2 id="portfolio-heading" class="section-title">Portfolio</h2>
+                    <p class="section-sub">samples from recent projects</p>
+
+                    <div class="port-section">
+                        <h3 class="port-section-title">Pro Services</h3>
+                        <div class="gallery-grid" role="list">
+                            <div class="gallery-card"
+                                 v-for="item in techGallery" :key="item.title"
+                                 :class="{ visible: item.visible }"
+                                 @click="openLightbox(item.img)"
+                                 @keyup.enter="openLightbox(item.img)"
+                                 tabindex="0"
+                                 role="listitem"
+                                 :aria-label="item.title + ' — click to enlarge'">
+                                <div class="gallery-img-wrap">
+                                    <div class="gallery-img"
+                                         :style="{ backgroundImage: 'url(' + item.img + ')' }"
+                                         role="img" :aria-label="item.title"></div>
+                                    <div class="gallery-protect" aria-hidden="true"></div>
+                                </div>
+                                <div class="gallery-caption">
+                                    <span class="gallery-title">{{ item.title }}</span>
+                                    <span class="gallery-cat">{{ item.catLabel }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="port-section">
+                        <h3 class="port-section-title">Design</h3>
+                        <div class="gallery-grid" role="list">
+                            <div class="gallery-card"
+                                 v-for="item in designGallery" :key="item.title"
+                                 :class="{ visible: item.visible }"
+                                 @click="openLightbox(item.img)"
+                                 @keyup.enter="openLightbox(item.img)"
+                                 tabindex="0"
+                                 role="listitem"
+                                 :aria-label="item.title + ' — click to enlarge'">
+                                <div class="gallery-img-wrap">
+                                    <div class="gallery-img"
+                                         :style="{ backgroundImage: 'url(' + item.img + ')' }"
+                                         role="img" :aria-label="item.title"></div>
+                                    <div class="gallery-protect" aria-hidden="true"></div>
+                                </div>
+                                <div class="gallery-caption">
+                                    <span class="gallery-title">{{ item.title }}</span>
+                                    <span class="gallery-cat">{{ item.catLabel }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="port-section">
+                        <h3 class="port-section-title">Calligraphy</h3>
+                        <div class="gallery-grid" role="list">
+                            <div class="gallery-card"
+                                 v-for="item in calliGallery" :key="item.title"
+                                 :class="{ visible: item.visible }"
+                                 @click="openLightbox(item.img)"
+                                 @keyup.enter="openLightbox(item.img)"
+                                 tabindex="0"
+                                 role="listitem"
+                                 :aria-label="item.title + ' — click to enlarge'">
+                                <div class="gallery-img-wrap">
+                                    <div class="gallery-img"
+                                         :style="{ backgroundImage: 'url(' + item.img + ')' }"
+                                         role="img" :aria-label="item.title"></div>
+                                    <div class="gallery-protect" aria-hidden="true"></div>
+                                </div>
+                                <div class="gallery-caption">
+                                    <span class="gallery-title">{{ item.title }}</span>
+                                    <span class="gallery-cat">{{ item.catLabel }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════
+                 ABOUT — no location reference
+            ═══════════════════════════════════════════════ -->
+            <section id="about" aria-labelledby="about-heading">
+                <div class="container">
+                    <div class="about-inner">
+                        <img class="about-logo"
+                             src="/assets/img/favicon/a-little-aloha-clear-noshadow-favicon-300.png"
+                             alt="A Little Aloha LLC"
+                             onerror="this.style.display='none'">
+                        <div class="section-rule" aria-hidden="true"></div>
+                        <h2 id="about-heading" class="section-title">About</h2>
+                        <p class="about-name">Kent Schaeffer</p>
+                        <p class="about-role">Founder &nbsp;·&nbsp; A Little Aloha LLC &nbsp;·&nbsp; Utah LLC &nbsp;·&nbsp; Est. 2026</p>
+                        <p class="about-body">
+                            Over 25 years of hands-on experience in enterprise Linux/Unix systems,
+                            DNS/DHCP/IPAM infrastructure, software development, technical writing,
+                            graphic design, and calligraphy. Formerly with Wells Fargo, Goldman Sachs,
+                            Fidelity Investments, Five9, and Consolidated Edison. Available for remote
+                            engagements and local on-site work throughout Salt Lake County.
+                        </p>
+                        <p class="about-body">
+                            The technical philosophy is straightforward: simple solutions to complex problems,
+                            secure by default, and free from unnecessary dependence on platforms that
+                            monetize your data or your clients' privacy. Open-source tools, self-hosted
+                            infrastructure, and clean maintainable code are the defaults — not the exception.
+                            All services available à la carte. Introductory rates through June 30, 2026.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════
+                 CONTACT / PLATFORMS
+                 Location appears only here.
+            ═══════════════════════════════════════════════ -->
+            <section id="platforms" aria-labelledby="platforms-heading">
+                <div class="container">
+                    <div class="section-rule" aria-hidden="true"></div>
+                    <h2 id="platforms-heading" class="platforms-heading">Contact</h2>
+                    <p class="platforms-location">A LITTLE ALOHA LLC &nbsp;·&nbsp; ALITTLEALOHA.PRO</p>
+
+                    <div class="platforms-grid" role="list">
+
+                        <a class="platform-link" href="https://www.linkedin.com/in/kentmschaeffer"
+                           role="listitem" aria-label="LinkedIn"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-linkedin platform-icon" aria-hidden="true"></i>
+                            <span class="platform-name">LinkedIn</span>
+                        </a>
+
+                        <a class="platform-link" href="https://github.com/kentknowsme"
+                           role="listitem" aria-label="GitHub"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-github platform-icon" aria-hidden="true"></i>
+                            <span class="platform-name">GitHub</span>
+                        </a>
+
+                        <a class="platform-link" href="mailto:kent@alittlealoha.pro"
+                           role="listitem" aria-label="Email">
+                            <i class="fa fa-envelope platform-icon" aria-hidden="true"></i>
+                            <span class="platform-name">Email</span>
+                        </a>
+
+                        <a class="platform-link" href="#"
+                           role="listitem" aria-label="Fiverr"
+                           target="_blank" rel="noopener noreferrer">
+                            <img class="platform-icon" src="https://cdn.simpleicons.org/fiverr/ffffff"
+                                 alt="" aria-hidden="true" style="width:32px;height:32px;filter:invert(0.55)">
+                            <span class="platform-name">Fiverr</span>
+                        </a>
+
+                        <a class="platform-link" href="#"
+                           role="listitem" aria-label="Upwork"
+                           target="_blank" rel="noopener noreferrer">
+                            <img class="platform-icon" src="https://cdn.simpleicons.org/upwork/ffffff"
+                                 alt="" aria-hidden="true" style="width:32px;height:32px;filter:invert(0.55)">
+                            <span class="platform-name">Upwork</span>
+                        </a>
+
+                        <a class="platform-link" href="#"
+                           role="listitem" aria-label="Codementor"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-code platform-icon" aria-hidden="true"></i>
+                            <span class="platform-name">Codementor</span>
+                        </a>
+
+                        <a class="platform-link" href="#"
+                           role="listitem" aria-label="Contra"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-briefcase platform-icon" aria-hidden="true"></i>
+                            <span class="platform-name">Contra</span>
+                        </a>
+
+                        <a class="platform-link" href="#"
+                           role="listitem" aria-label="Thumbtack"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-thumb-tack platform-icon" aria-hidden="true"></i>
+                            <span class="platform-name">Thumbtack</span>
+                        </a>
+
+                        <a class="platform-link" href="#"
+                           role="listitem" aria-label="Field Engineer"
+                           target="_blank" rel="noopener noreferrer">
+                            <i class="fa fa-wrench platform-icon" aria-hidden="true"></i>
+                            <span class="platform-name">Field Eng.</span>
+                        </a>
+
+                        <a class="platform-link" href="https://unsplash.com/@kentknowsme"
+                           role="listitem" aria-label="Unsplash"
+                           target="_blank" rel="noopener noreferrer">
+                            <img class="platform-icon" src="https://cdn.simpleicons.org/unsplash/ffffff"
+                                 alt="" aria-hidden="true" style="width:32px;height:32px;filter:invert(0.55)">
+                            <span class="platform-name">Unsplash</span>
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer role="contentinfo">
+            <div class="container">
+                <p style="margin-top:10px">&copy; {{ year }} <a href="https://alittlealoha.pro">A Little Aloha LLC</a>. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Scroll-to-top -->
+        <button class="home-button"
+                :class="{ visible: showTop }"
+                @click="scrollTop"
+                aria-label="Scroll to top"
+                :aria-hidden="showTop ? 'false' : 'true'">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </button>
+
+        <!-- ═══════════════════════════════════════════════════
+             LIGHTBOX
+             v-if = only exists in DOM when open.
+             Escape handled by window keydown listener in index.js.
+             Click overlay or × to close.
+        ═══════════════════════════════════════════════════ -->
+        <div v-if="isLightboxOpen"
+             class="lightbox-overlay"
+             role="dialog" aria-modal="true" aria-label="Portfolio image"
+             @click.self="closeLightbox">
+            <button class="lightbox-close"
+                    @click="closeLightbox"
+                    aria-label="Close image">
+                &times;
+            </button>
+            <img :src="selectedImage" class="lightbox-img" alt="Portfolio preview">
+        </div>
+
+    </div><!-- #app -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

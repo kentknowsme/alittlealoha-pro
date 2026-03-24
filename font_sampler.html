@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Aloha — Font Sampler</title>
+<link href="https://fonts.bunny.net/css?family=oxanium:300,400,600|russo-one:400|michroma:400|syncopate:400,700|gugi:400|exo-2:300,400,600|jura:400,600|chakra-petch:400,600|electrolize:400|ibm-plex-sans:400,600&display=swap" rel="stylesheet">
+<!--
+  Neuropol X, Bayshore, Outrunner, Lazer 84 are NOT available on Google Fonts or Bunny Fonts CDN.
+  To display them, download the font files and add @font-face rules like:
+
+  @font-face {
+    font-family: 'Neuropol X';
+    src: url('/fonts/neuropol-x.woff2') format('woff2');
+    font-weight: 400;
+  }
+
+  Then uncomment the four @font-face blocks below and place font files in /fonts/.
+-->
+<style>
+/*
+@font-face { font-family: 'Neuropol X'; src: url('/fonts/neuropol-x.woff2') format('woff2'); }
+@font-face { font-family: 'Bayshore';   src: url('/fonts/bayshore.woff2')   format('woff2'); }
+@font-face { font-family: 'Outrunner';  src: url('/fonts/outrunner.woff2')  format('woff2'); }
+@font-face { font-family: 'Lazer 84';   src: url('/fonts/lazer84.woff2')    format('woff2'); }
+*/
+
+:root {
+    --green:  #008000;
+    --gold:   #F4B861;
+    --violet: #C96AFF;
+    --bg:     #071A00;
+    --surface:#0E2E00;
+    --muted:  #6a9a6a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--bg);
+    color: #e8e8e8;
+    font-family: 'IBM Plex Sans', sans-serif;
+    padding: 40px 32px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header {
+    border-bottom: 2px solid var(--green);
+    padding-bottom: 20px;
+    margin-bottom: 48px;
+}
+header h1 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 6px;
+}
+header p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.font-block {
+    background: var(--surface);
+    border: 1px solid rgba(0,128,0,0.22);
+    border-radius: 10px;
+    padding: 28px 28px 22px;
+    margin-bottom: 24px;
+}
+.font-block.unavailable {
+    border-color: rgba(201,106,255,0.2);
+    opacity: 0.85;
+}
+
+.font-label {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 10px;
+}
+.font-block.unavailable .font-label { color: var(--violet); }
+
+.font-block h1 {
+    font-size: 52px;
+    line-height: 1.1;
+    color: var(--gold);
+    margin-bottom: 6px;
+    font-weight: 400;
+}
+.font-block h2 {
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--violet);
+    margin-bottom: 18px;
+    font-weight: 400;
+}
+
+.license {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    color: #8aaa8a;
+    line-height: 1.65;
+    border-top: 1px solid rgba(0,128,0,0.15);
+    padding-top: 14px;
+    margin-top: 4px;
+}
+.license strong { color: #b8d8b8; font-weight: 600; }
+.license a { color: var(--gold); }
+.license .warn {
+    display: inline-block;
+    background: rgba(201,106,255,0.12);
+    color: var(--violet);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+}
+.license .ok {
+    display: inline-block;
+    background: rgba(0,128,0,0.15);
+    color: #66cc66;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>A Little Aloha — Font Sampler</h1>
+    <p>Sample text: "A Little Aloha" (h1, gold) and "Pro Services With A Little Aloha" (h2, violet).<br>
+    Fonts loaded from Bunny Fonts CDN where available. Self-host fonts marked <span style="color:var(--violet);font-weight:600;">SELF-HOST REQUIRED</span>.</p>
+</header>
+
+<!-- 1 — Oxanium -->
+<div class="font-block">
+    <p class="font-label">1 — Oxanium</p>
+    <h1 style="font-family:'Oxanium',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Oxanium',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="ok">FREE COMMERCIAL USE</span><br>
+        <strong>License:</strong> SIL Open Font License 1.1 (OFL). Free for all personal and commercial use, including web embedding, logos, and print. No attribution required.<br>
+        <strong>Source:</strong> Google Fonts / Bunny Fonts CDN. Designer: Severin Meyer.
+    </p>
+</div>
+
+<!-- 2 — Russo One -->
+<div class="font-block">
+    <p class="font-label">2 — Russo One</p>
+    <h1 style="font-family:'Russo One',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Russo One',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="ok">FREE COMMERCIAL USE</span><br>
+        <strong>License:</strong> SIL Open Font License 1.1 (OFL). Free for all personal and commercial use. Web embedding, logos, merchandise, and print permitted.<br>
+        <strong>Source:</strong> Google Fonts / Bunny Fonts CDN. Designer: Jovanny Lemonad.
+    </p>
+</div>
+
+<!-- 3 — Michroma -->
+<div class="font-block">
+    <p class="font-label">3 — Michroma</p>
+    <h1 style="font-family:'Michroma',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Michroma',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="ok">FREE COMMERCIAL USE</span><br>
+        <strong>License:</strong> SIL Open Font License 1.1 (OFL). Free for all personal and commercial use including logos, web, and print.<br>
+        <strong>Source:</strong> Google Fonts / Bunny Fonts CDN. Designer: Vernon Adams.
+    </p>
+</div>
+
+<!-- 4 — Syncopate -->
+<div class="font-block">
+    <p class="font-label">4 — Syncopate</p>
+    <h1 style="font-family:'Syncopate',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Syncopate',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="ok">FREE COMMERCIAL USE</span><br>
+        <strong>License:</strong> SIL Open Font License 1.1 (OFL). Free for all personal and commercial use.<br>
+        <strong>Source:</strong> Google Fonts / Bunny Fonts CDN. Designer: John Vargas Beltrán.
+    </p>
+</div>
+
+<!-- 5 — Gugi -->
+<div class="font-block">
+    <p class="font-label">5 — Gugi</p>
+    <h1 style="font-family:'Gugi',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Gugi',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="ok">FREE COMMERCIAL USE</span><br>
+        <strong>License:</strong> SIL Open Font License 1.1 (OFL). Free for all personal and commercial use.<br>
+        <strong>Source:</strong> Google Fonts / Bunny Fonts CDN. Designer: Soo-young Jang.
+    </p>
+</div>
+
+<!-- 6 — Exo 2 -->
+<div class="font-block">
+    <p class="font-label">6 — Exo 2</p>
+    <h1 style="font-family:'Exo 2',sans-serif;font-weight:300;">A Little Aloha</h1>
+    <h2 style="font-family:'Exo 2',sans-serif;font-weight:300;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="ok">FREE COMMERCIAL USE</span><br>
+        <strong>License:</strong> SIL Open Font License 1.1 (OFL). Free for all personal and commercial use.<br>
+        <strong>Source:</strong> Google Fonts / Bunny Fonts CDN. Designer: Natanael Gama.
+    </p>
+</div>
+
+<!-- 7 — Jura -->
+<div class="font-block">
+    <p class="font-label">7 — Jura</p>
+    <h1 style="font-family:'Jura',sans-serif;font-weight:600;">A Little Aloha</h1>
+    <h2 style="font-family:'Jura',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="ok">FREE COMMERCIAL USE</span><br>
+        <strong>License:</strong> SIL Open Font License 1.1 (OFL). Free for all personal and commercial use.<br>
+        <strong>Source:</strong> Google Fonts / Bunny Fonts CDN. Designer: Daniel Johnson.
+    </p>
+</div>
+
+<!-- 8 — Chakra Petch -->
+<div class="font-block">
+    <p class="font-label">8 — Chakra Petch</p>
+    <h1 style="font-family:'Chakra Petch',sans-serif;font-weight:400;">A Little Aloha</h1>
+    <h2 style="font-family:'Chakra Petch',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="ok">FREE COMMERCIAL USE</span><br>
+        <strong>License:</strong> SIL Open Font License 1.1 (OFL). Free for all personal and commercial use.<br>
+        <strong>Source:</strong> Google Fonts / Bunny Fonts CDN. Designer: Cadson Demak.
+    </p>
+</div>
+
+<!-- 9 — Electrolize -->
+<div class="font-block">
+    <p class="font-label">9 — Electrolize</p>
+    <h1 style="font-family:'Electrolize',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Electrolize',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="ok">FREE COMMERCIAL USE</span><br>
+        <strong>License:</strong> SIL Open Font License 1.1 (OFL). Free for all personal and commercial use.<br>
+        <strong>Source:</strong> Google Fonts / Bunny Fonts CDN. Designer: Andrew Paglinawan.
+    </p>
+</div>
+
+<!-- 10 — Neuropol X -->
+<div class="font-block unavailable">
+    <p class="font-label">10 — Neuropol X</p>
+    <h1 style="font-family:'Neuropol X',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Neuropol X',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="warn">SELF-HOST REQUIRED</span><br>
+        <strong>License:</strong> Typodermic Free Font License. Free for both personal and commercial use — including logos, web use, and print — at no cost. No attribution required. Cannot be sold or repackaged as a font product.<br>
+        <strong>Source:</strong> <a href="https://typodermicfonts.com" target="_blank">typodermicfonts.com</a> or <a href="https://www.fontsquirrel.com" target="_blank">fontsquirrel.com</a>. Designer: Ray Larabie.<br>
+        <strong>Note:</strong> Not on Google/Bunny CDN. Download and self-host via @font-face (see comment at top of this file).
+    </p>
+</div>
+
+<!-- 11 — Bayshore -->
+<div class="font-block unavailable">
+    <p class="font-label">11 — Bayshore</p>
+    <h1 style="font-family:'Bayshore',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Bayshore',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="warn">SELF-HOST REQUIRED</span><br>
+        <strong>License:</strong> Typodermic Free Font License. Free for personal and commercial use. Same terms as Neuropol X above — cannot be sold as a font.<br>
+        <strong>Source:</strong> <a href="https://typodermicfonts.com" target="_blank">typodermicfonts.com</a>. Designer: Ray Larabie.<br>
+        <strong>Note:</strong> Not on Google/Bunny CDN. Self-host required. Bayshore is a display/retro neon script — verify it matches your visual direction before purchasing/downloading.
+    </p>
+</div>
+
+<!-- 12 — Outrunner -->
+<div class="font-block unavailable">
+    <p class="font-label">12 — Outrunner</p>
+    <h1 style="font-family:'Outrunner',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Outrunner',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="warn">SELF-HOST REQUIRED — VERIFY LICENSE</span><br>
+        <strong>License:</strong> Multiple fonts named "Outrunner" exist from different designers with different licenses. <strong>Verify the specific file's license before commercial use.</strong> Common sources include DaFont and Creative Market — DaFont listings vary between Personal Use Only and full commercial. Purchase a commercial license if the free download is restricted.<br>
+        <strong>Source:</strong> <a href="https://www.dafont.com" target="_blank">dafont.com</a> or <a href="https://creativemarket.com" target="_blank">creativemarket.com</a>.<br>
+        <strong>Note:</strong> Not on any public CDN. Self-host required.
+    </p>
+</div>
+
+<!-- 13 — Lazer 84 -->
+<div class="font-block unavailable">
+    <p class="font-label">13 — Lazer 84</p>
+    <h1 style="font-family:'Lazer 84',sans-serif;">A Little Aloha</h1>
+    <h2 style="font-family:'Lazer 84',sans-serif;font-weight:400;">Pro Services With A Little Aloha</h2>
+    <p class="license">
+        <span class="warn">SELF-HOST REQUIRED — COMMERCIAL LICENSE NEEDED</span><br>
+        <strong>License:</strong> Free for personal use only. Commercial use requires purchasing a license from the designer. The free DaFont download explicitly restricts commercial use.<br>
+        <strong>Source:</strong> <a href="https://www.dafont.com/lazer-84.font" target="_blank">dafont.com/lazer-84</a>. Designer: Juan Hodgson.<br>
+        <strong>Commercial license:</strong> Available directly from the designer — contact via the DaFont listing or <a href="https://creativemarket.com" target="_blank">creativemarket.com</a>. Cost is typically $15–30 for a single commercial license.<br>
+        <strong>Note:</strong> Not on any public CDN. Self-host required after purchasing license.
+    </p>
+</div>
+
+</body>
+</html>
