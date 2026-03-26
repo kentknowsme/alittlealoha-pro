@@ -65,11 +65,11 @@ a:hover, a:focus-visible { color: var(--gold-light); }
     padding: 0.5rem 0;
     background-color: rgba(7,26,0,0.10) !important;
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid transparent;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
+
 .navbar.scrolled {
-    background-color: rgba(7,26,0,0.96) !important;
+    background-color: rgba(7,26,0,0.30) !important;
     border-bottom-color: var(--border);
 }
 
@@ -78,23 +78,25 @@ a:hover, a:focus-visible { color: var(--gold-light); }
 
 .nav-link {
     font-family: var(--font-body);
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    font-size: 0.9rem; font-weight: 400; letter-spacing: 0.1em;
     color: var(--text) !important;
     position: relative; padding-bottom: 4px;
     transition: color 0.2s ease;
 }
-.nav-link::after {
+.nav-link::after, .serv-sticky-link::after {
     content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
     width: 0; height: 2px; background: var(--gold); transition: width 0.25s ease;
 }
-.nav-link:hover, .nav-link.active       { color: var(--gold) !important; }
+.nav-link:hover, .nav-link.active, .serv-sticky-link:hover, .serv-sticky-link.active { 
+    color: var(--gold) !important; font-weight: 700;
+}
 .nav-link:hover::after, .nav-link.active::after { width: 80%; }
 .nav-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
 
 /* ── Buttons ──────────────────────────────────────────────── */
 .btn-aloha {
     font-family: var(--font-body);
-    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(255,255,255,0.07);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
@@ -167,7 +169,7 @@ section { padding: 5rem 0; }
     font-size: 0.95rem;
     color: var(--text-muted);
     text-align: center; margin-bottom: 2.5rem;
-    letter-spacing: 0.12em; text-transform: uppercase;
+    letter-spacing: 0.12em;
 }
 
 /* ── Banners ──────────────────────────────────────────────── */
@@ -198,34 +200,30 @@ section { padding: 5rem 0; }
 .philosophy-note strong { color: var(--green-light); }
 
 /* ── Services sticky sub-nav ──────────────────────────────── */
-.sticky-nav {
+.serv-sticky-nav {
     position: sticky;
     top: var(--nav-h);
     z-index: 900;
-    background: rgba(7,26,0,0.92);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
     padding: 0.55rem 0;
     margin-bottom: 2.5rem;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     gap: 0.75rem;
     flex-wrap: wrap;
 }
-.sticky-nav a {
+.serv-sticky-link {
     font-family: var(--font-body);
-    font-size: 0.72rem; font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase; letter-spacing: 0.08em;
+    font-size: 0.8rem; font-weight: 400;
+    color: var(--text); letter-spacing: 0.08em;
     text-decoration: none;
     padding: 0.3rem 0.9rem;
     border-radius: 4px;
-    transition: color 0.2s, background 0.2s;
+    transition: color 0.2s ease;
 }
-.sticky-nav a:hover, .sticky-nav a.active {
-    color: var(--gold);
-    background: rgba(240,176,96,0.1);
-}
+
 
 /* ── DBA section headers ──────────────────────────────────── */
 .dba-section { max-width: 900px; margin: 0 auto 3.5rem; }
@@ -287,7 +285,7 @@ section { padding: 5rem 0; }
 }
 .card-meta {
     font-size: 0.75rem; font-weight: 700; color: var(--green-light);
-    letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-top: 0.15rem;
+    letter-spacing: 0.08em; display: block; margin-top: 0.15rem;
 }
 
 /* Card body: hidden by default, revealed via accordion */
@@ -316,7 +314,7 @@ section { padding: 5rem 0; }
 .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 0.65rem; }
 .tag {
     font-family: var(--font-body);
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.07em;
     background: rgba(0,128,0,0.12); color: var(--green-light);
     border: 1px solid rgba(0,128,0,0.28); padding: 3px 8px; border-radius: 4px;
 }
@@ -378,7 +376,7 @@ section { padding: 5rem 0; }
 .gallery-cat {
     font-family: var(--font-body);
     font-size: 0.65rem; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);
+    letter-spacing: 0.1em; color: var(--text-muted);
 }
 
 /* ── Lightbox ─────────────────────────────────────────────── */
@@ -429,7 +427,7 @@ section { padding: 5rem 0; }
 .about-inner { max-width: 680px; margin: 0 auto; text-align: center; }
 .about-logo  { height: 88px; width: 88px; object-fit: contain; margin: 0 auto 1.25rem; display: block; }
 .about-name  { font-family: var(--font-dba); font-size: 1.5rem; color: var(--gold); margin-bottom: 5px; }
-.about-role  { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-light); margin-bottom: 1.35rem; }
+.about-role  { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.14em; color: var(--green-light); margin-bottom: 1.35rem; }
 .about-body  {
     font-family: var(--font-body);
     font-size: 1rem;
@@ -519,3 +517,4 @@ footer a:hover{ color: var(--gold-light); }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+

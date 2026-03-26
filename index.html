@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow">
     <meta property="og:type"        content="website">
     <meta property="og:url"         content="https://alittlealoha.pro/">
-    <meta property="og:title"       content="A Little Aloha LLC — Pro Services · Design · Calligraphy">
+    <meta property="og:title"       content="Pro Services · Design · Calligraphy with A Little Aloha LLC">
     <meta property="og:description" content="IT consulting, design, and calligraphy services.">
     <meta property="og:image"       content="https://alittlealoha.pro/assets/img/og-image.png">
     <link rel="canonical" href="https://alittlealoha.pro/">
@@ -29,7 +29,7 @@
     <link href="https://fonts.bunny.net/css?family=sarina:400|syncopate:400,700|chakra-petch:400,600,700&display=swap" rel="stylesheet">
 
     <!-- Site CSS -->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -58,7 +58,7 @@
                                @click.prevent="scrollTo('services')"
                                :class="{ active: activeSection === 'services' }"
                                :aria-current="activeSection === 'services' ? 'page' : false">
-                                Services
+                                services
                             </a>
                         </li>
                         <li role="listitem">
@@ -66,7 +66,7 @@
                                @click.prevent="scrollTo('portfolio')"
                                :class="{ active: activeSection === 'portfolio' }"
                                :aria-current="activeSection === 'portfolio' ? 'page' : false">
-                                Portfolio
+                                portfolio
                             </a>
                         </li>
                         <li role="listitem">
@@ -74,7 +74,7 @@
                                @click.prevent="scrollTo('about')"
                                :class="{ active: activeSection === 'about' }"
                                :aria-current="activeSection === 'about' ? 'page' : false">
-                                About
+                                about
                             </a>
                         </li>
                         <li role="listitem">
@@ -82,7 +82,7 @@
                                @click.prevent="scrollTo('platforms')"
                                :class="{ active: activeSection === 'platforms' }"
                                :aria-current="activeSection === 'platforms' ? 'page' : false">
-                                Contact
+                                contact
                             </a>
                         </li>
                     </ul>
@@ -103,6 +103,7 @@
                 Nothing outside this box is affected by canvas transitions.
             -->
             <div class="hero-logo-container" aria-hidden="true">
+                <!-- <div id="three-container"></div> -->
                 <canvas id="hero-canvas"></canvas>
             </div>
 
@@ -144,11 +145,11 @@
                         </p>
                     </div>
 
-                    <nav class="sticky-nav" aria-label="Services categories">
-                        <a href="#infra"  @click.prevent="scrollTo('infra')">Infrastructure &amp; DDI</a>
-                        <a href="#webops" @click.prevent="scrollTo('webops')">Web &amp; DevOps</a>
-                        <a href="#design" @click.prevent="scrollTo('design')">Design</a>
-                        <a href="#calli"  @click.prevent="scrollTo('calli')">Calligraphy</a>
+                    <nav class="serv-sticky-nav" aria-label="Services categories">
+                        <a class="serv-sticky-link" href="#infra"  @click.prevent="scrollTo('infra')">Infrastructure &amp; DDI</a>
+                        <a class="serv-sticky-link" href="#webops" @click.prevent="scrollTo('webops')">Web &amp; DevOps</a>
+                        <a class="serv-sticky-link" href="#design" @click.prevent="scrollTo('design')">Design</a>
+                        <a class="serv-sticky-link" href="#calli"  @click.prevent="scrollTo('calli')">Calligraphy</a>
                     </nav>
 
                     <!-- Infrastructure & DDI -->
@@ -265,7 +266,14 @@
                     <h2 id="portfolio-heading" class="section-title">Portfolio</h2>
                     <p class="section-sub">samples from recent projects</p>
 
-                    <div class="port-section">
+                    <!-- <nav class="port-sticky-nav" aria-label="Services categories" class="visually-hidden">
+                        <a class="port-sticky-link" href="#professional"  @click.prevent="scrollTo('infra')">Infrastructure &amp; DDI</a>
+                        <a class="port-sticky-link" href="#design" @click.prevent="scrollTo('webops')">Web &amp; DevOps</a>
+                        <a class="port-sticky-link" href="#calligraphy" @click.prevent="scrollTo('design')">Design</a>
+                        <a class="port-sticky-link" href="#calli"  @click.prevent="scrollTo('calli')">Calligraphy</a>
+                    </nav> -->
+
+                    <div class="port-section" id="professional">
                         <h3 class="port-section-title">Pro Services</h3>
                         <div class="gallery-grid" role="list">
                             <div class="gallery-card"
@@ -290,7 +298,7 @@
                         </div>
                     </div>
 
-                    <div class="port-section">
+                    <div class="port-section" id="design">
                         <h3 class="port-section-title">Design</h3>
                         <div class="gallery-grid" role="list">
                             <div class="gallery-card"
@@ -315,7 +323,7 @@
                         </div>
                     </div>
 
-                    <div class="port-section">
+                    <div class="port-section" id="calligraphy">
                         <h3 class="port-section-title">Calligraphy</h3>
                         <div class="gallery-grid" role="list">
                             <div class="gallery-card"
@@ -500,8 +508,13 @@
 
     </div><!-- #app -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script>
-    <script src="index.js"></script>
+
+    <!-- Vendor JS -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script> -->
+
+    <!-- Vite app entry scripts -->
+    <script src="./src/main.js" type="module"></script>
+
 </body>
 </html>

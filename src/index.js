@@ -1,6 +1,9 @@
 'use strict';
 
-const { createApp } = Vue;
+// const { createApp } = Vue;
+
+// replace existing top of index.js
+import { createApp } from 'vue';
 
 /* ── Constants ──────────────────────────────────────────────────────────── */
 const CANVAS_SIZE   = 1000;          // internal canvas resolution (px)
@@ -118,6 +121,35 @@ createApp({
         this._initCanvas();
         this._animateCards();
         this._initObserver();
+        (() => {
+            const computeStickyOffset = () => {
+                const navContainer = document.querySelector('nav .container');
+                const servicesLink = document.querySelector('nav .nav-link[href="#services"]');
+                const sticky = document.querySelector('.sticky-nav');
+
+                if (!navContainer || !servicesLink || !sticky) {
+                sticky && sticky.style.removeProperty('--sticky-offset');
+                return;
+                }
+
+                const containerRect = navContainer.getBoundingClientRect();
+                const linkRect = servicesLink.getBoundingClientRect();
+
+                // left offset relative to container left
+                const leftInContainer = Math.max(0, linkRect.left - containerRect.left);
+
+                // set CSS var on body or sticky directly
+                sticky.style.setProperty('--sticky-offset', `${leftInContainer}px`);
+            };
+
+            // compute once and on resize (and orientationchange)
+            computeStickyOffset();
+            window.addEventListener('resize', computeStickyOffset, { passive: true });
+            window.addEventListener('orientationchange', computeStickyOffset, { passive: true });
+
+            // Optional: rerun after fonts / images loaded
+            window.addEventListener('load', computeStickyOffset);
+        })();
     },
 
     beforeUnmount() {
