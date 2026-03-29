@@ -5,6 +5,10 @@ import { createApp } from 'vue';
 /* ── Constants ──────────────────────────────────────────────────────────── */
 const CANVAS_SIZE   = 1000;
 const SLIDE_HOLD_MS = 5000;
+// Inset every logo draw by this many px on each side so the content sits
+// inside the inscribed circle and border-radius:50% clips nothing.
+// Increase if the logo still clips; decrease if the logo looks too small.
+const LOGO_PAD      = 40;
 
 // Brand colours for effects that don't pixel-sample (avoids tainted-canvas
 // issues when SVGs are cross-origin or served from file://).
@@ -503,7 +507,12 @@ createApp({
     /* ── Methods ──────────────────────────────────────────────────────── */
     methods: {
 
-        /* ── Tag processing (called once on mount) ────────────────────── */
+        /* ── Padded drawImage helper ──────────────────────────────────── */
+        // Every logo is drawn inset by LOGO_PAD px on all four sides so
+        // the content fits inside the border-radius:50% circle.
+        _di(ctx, img, w, h) {
+            ctx.drawImage(img, LOGO_PAD, LOGO_PAD, w - LOGO_PAD * 2, h - LOGO_PAD * 2);
+        },
         _processServicesData() {
             const processList = (list) => list.map(item => {
                 const allLabels = [...new Set([...(item.meta || []), ...(item.tags || [])])];
@@ -586,7 +595,7 @@ createApp({
             const ctx = this._ctx;
             ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
             if (this._imgs[0] && this._imgs[0].naturalWidth) {
-                ctx.drawImage(this._imgs[0], 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+                this._di(ctx, this._imgs[0], CANVAS_SIZE, CANVAS_SIZE);
             }
             this._startCycle();
         },
@@ -640,10 +649,10 @@ createApp({
             const tick = now => {
                 const t = Math.min((now - t0) / dur, 1);
                 ctx.clearRect(0, 0, w, h);
-                ctx.globalAlpha = 1 - t; ctx.drawImage(from, 0, 0, w, h);
-                ctx.globalAlpha = t;     ctx.drawImage(to,   0, 0, w, h);
+                ctx.globalAlpha = 1 - t; this._di(ctx, from, w, h);
+                ctx.globalAlpha = t;     this._di(ctx, to,   w, h);
                 ctx.globalAlpha = 1;
-                this._raf = t < 1 ? requestAnimationFrame(tick) : (ctx.drawImage(to, 0, 0, w, h), done());
+                this._raf = t < 1 ? requestAnimationFrame(tick) : (this._di(ctx, to, w, h), done());
             };
             this._raf = requestAnimationFrame(tick);
         },
@@ -661,7 +670,7 @@ createApp({
             const tick = now => {
                 const t = Math.min((now - t0) / dur, 1);
                 ctx.clearRect(0, 0, w, h);
-                ctx.drawImage(to, 0, 0, w, h);
+                this._di(ctx, to, w, h);
 
                 for (let i = 0; i < COLS; i++) {
                     const cp = Math.max(0, Math.min(1, (t - offsets[i]) / 0.55));
@@ -670,7 +679,7 @@ createApp({
                     ctx.save();
                     ctx.beginPath(); ctx.rect(i * colW, 0, colW, h); ctx.clip();
                     ctx.globalAlpha = 1 - cp;
-                    ctx.drawImage(from, 0, 0, w, h);
+                    this._di(ctx, from, w, h);
 
                     if (cp > 0.05 && cp < 0.95) {
                         const glow = Math.sin(cp * Math.PI) * 0.75;
@@ -686,7 +695,7 @@ createApp({
                     this._raf = requestAnimationFrame(tick);
                 } else {
                     ctx.clearRect(0, 0, w, h);
-                    ctx.drawImage(to, 0, 0, w, h);
+                    this._di(ctx, to, w, h);
                     done();
                 }
             };
@@ -717,15 +726,15 @@ createApp({
                         ctx.beginPath(); ctx.rect(bx, by, bw, bh); ctx.clip();
 
                         if (t < thr) {
-                            ctx.drawImage(from, 0, 0, w, h);
+                            this._di(ctx, from, w, h);
                         } else if (t < thr + 0.055) {
                             const ft = (t - thr) / 0.055;
-                            ctx.drawImage(to, 0, 0, w, h);
+                            this._di(ctx, to, w, h);
                             ctx.globalAlpha = 1 - ft;
                             ctx.fillStyle = '#F8CC8A';
                             ctx.fillRect(bx, by, bw, bh);
                         } else {
-                            ctx.drawImage(to, 0, 0, w, h);
+                            this._di(ctx, to, w, h);
                         }
                         ctx.restore();
                     }
@@ -736,7 +745,7 @@ createApp({
                     this._raf = requestAnimationFrame(tick);
                 } else {
                     ctx.clearRect(0, 0, w, h);
-                    ctx.drawImage(to, 0, 0, w, h);
+                    this._di(ctx, to, w, h);
                     done();
                 }
             };
@@ -773,7 +782,7 @@ createApp({
                     const pt = t / 0.65;
                     const e  = pt * pt;
                     ctx.globalAlpha = Math.max(0, 1 - pt * 2.2);
-                    ctx.drawImage(from, 0, 0, w, h);
+                    this._di(ctx, from, w, h);
                     ctx.globalAlpha = 1;
 
                     const pAlpha = Math.max(0, 1 - e * 1.3);
@@ -789,7 +798,7 @@ createApp({
                 if (t > 0.38) {
                     const ft = Math.min((t - 0.38) / 0.62, 1);
                     ctx.globalAlpha = ft;
-                    ctx.drawImage(to, 0, 0, w, h);
+                    this._di(ctx, to, w, h);
                 }
 
                 ctx.globalAlpha = 1;
@@ -797,7 +806,7 @@ createApp({
                     this._raf = requestAnimationFrame(tick);
                 } else {
                     ctx.clearRect(0, 0, w, h);
-                    ctx.drawImage(to, 0, 0, w, h);
+                    this._di(ctx, to, w, h);
                     done();
                 }
             };
@@ -822,7 +831,7 @@ createApp({
                 if (r > 0) {
                     ctx.save();
                     ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.clip();
-                    ctx.drawImage(to, 0, 0, w, h);
+                    this._di(ctx, to, w, h);
                     ctx.restore();
                 }
 
@@ -832,7 +841,7 @@ createApp({
                     ctx.rect(0, 0, w, h);
                     ctx.arc(cx, cy, r, 0, Math.PI * 2, true);
                     ctx.clip();
-                    ctx.drawImage(from, 0, 0, w, h);
+                    this._di(ctx, from, w, h);
                     ctx.restore();
                 }
 
@@ -853,7 +862,7 @@ createApp({
                     this._raf = requestAnimationFrame(tick);
                 } else {
                     ctx.clearRect(0, 0, w, h);
-                    ctx.drawImage(to, 0, 0, w, h);
+                    this._di(ctx, to, w, h);
                     done();
                 }
             };
@@ -887,7 +896,9 @@ createApp({
                 const off = document.createElement('canvas');
                 off.width = w;  off.height = h;
                 const c = off.getContext('2d');
-                c.drawImage(img, 0, 0, w, h);
+                // Draw with the same padding used for display so particle
+                // positions align with the visible logo.
+                c.drawImage(img, LOGO_PAD, LOGO_PAD, w - LOGO_PAD * 2, h - LOGO_PAD * 2);
                 try { return c.getImageData(0, 0, w, h).data; }
                 catch (_) { return null; }   // tainted canvas — use brand colours
             };
@@ -967,7 +978,7 @@ createApp({
                     const imgA  = Math.max(0, 1 - phase * 3.5);
                     if (imgA > 0) {
                         ctx.globalAlpha = imgA;
-                        ctx.drawImage(from, 0, 0, w, h);
+                        this._di(ctx, from, w, h);
                         ctx.globalAlpha = 1;
                     }
                     for (const p of exitParts) {
@@ -1000,7 +1011,7 @@ createApp({
                     // Final image fades in over the last quarter of the enter phase.
                     if (phase > 0.72) {
                         ctx.globalAlpha = ss((phase - 0.72) / 0.28);
-                        ctx.drawImage(to, 0, 0, w, h);
+                        this._di(ctx, to, w, h);
                         ctx.globalAlpha = 1;
                     }
                 }
@@ -1009,7 +1020,7 @@ createApp({
                     this._raf = requestAnimationFrame(tick);
                 } else {
                     ctx.clearRect(0, 0, w, h);
-                    ctx.drawImage(to, 0, 0, w, h);
+                    this._di(ctx, to, w, h);
                     done();
                 }
             };
